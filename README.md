@@ -1,29 +1,29 @@
-# SpendWise - Personal Finance Tracker
+# Personal Budget Tracker - Visual Identity (Week 3)
 
-## Project Description
-SpendWise is a responsive web application designed to help users track their income, monitor expenses, and manage personal budgets effectively with clear visual breakdowns.
+## Overview
+This project is a styled Personal Budget Tracker built using semantic HTML5 and modern CSS3. The goal of this phase was to transform a plain HTML structure into a clean, user-friendly, and visually cohesive financial tracking interface without altering the core HTML structure.
 
-## Technologies Used
-- HTML5, CSS3, JavaScript
-- Git & GitHub (Version Control)
-- Netlify (Hosting & Continuous Deployment)
+## Design Decisions & Features
 
-## GitHub Repository Information
-- **Repository URL:** https://github.com/sulekhoabdi1/SpendWise
-- **Visibility:** Public
-- **Main Branch:** `main`
+### 1. Intentional Color Palette
+A professional, finance-inspired color scheme was implemented using CSS custom properties (`:root`):
+- **Primary Color (`#1e3a8a` - Deep Navy):** Used for main headings, section titles, and table headers to establish trust and visual hierarchy.
+- **Accent Color (`#10b981` - Emerald Green):** Applied to primary action buttons to draw user attention and signify financial growth/action.
+- **Neutral Backgrounds (`#f1f5f9` & `#ffffff`):** A soft slate background contrasts with crisp white content cards to reduce eye strain.
 
-## Live Netlify Website URL
-- **Live Demo:** https://spendwise-app.netlify.app
+### 2. Custom Typography
+Google Fonts were integrated to establish clear typographic hierarchy:
+- **Headings (`Poppins`):** Bold, geometric sans-serif font used for titles and table headers.
+- **Body & UI Elements (`Inter`):** Clean, highly legible font applied to form labels, inputs, buttons, and table data.
 
-## Deployment Process Summary
-1. Organized local project files (`index.html`, `style.css`).
-2. Initialized Git and pushed code to a public GitHub repository.
-3. Connected Netlify to the GitHub repository for continuous integration and automated deployment.
-4. Updated default subdomain to a custom project name and verified automatic deployments.
+### 3. Form & Table Styling
+- **Form:** Inputs and dropdowns include generous padding, subtle borders, rounded corners (`8px`), and interactive `:focus` states for accessibility.
+- **Table:** Features a high-contrast header, structured cell padding, subtle row dividers, alternating row shading (`:nth-child(even)`), and hover highlights for easy scanning.
 
-## Challenges Encountered During Deployment
-- Managing relative asset paths correctly during site deployment to ensure CSS loaded seamlessly.
+### 4. CSS Box Model Layout
+The page is organized into three distinct visual cards (**Header**, **Add Expense Form**, and **Expense Table**) using consistent `margin`, `padding`, `border`, and `border-radius` properties.
 
-## Lessons Learned
-- Understood modern deployment workflows and continuous integration (CI/CD) pipelines using GitHub and Netlify.
+## Project Structure
+- `index.html` – Semantic HTML structure for the header, expense form, and expense table.
+- `style.css` – Complete stylesheet containing typography, color variables, box model layout, and responsive rules.
+- `README.md` – Documentation explaining the project architecture and design choices.

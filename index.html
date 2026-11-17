@@ -1,222 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Budget Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <!-- Card 1: Page Heading -->
+    <header>
+      <h1>Personal Budget Tracker</h1>
+      <p>Track your daily expenses and manage your finances effortlessly.</p>
+    </header>
 
-/* =========================================
-   1. COLOR PALETTE & CSS VARIABLES
-   ========================================= */
-:root {
-  --bg-page: #f8fafc;          /* Light Slate page background */
-  --bg-card: #ffffff;          /* Pure White for card sections */
-  --primary-navy: #0f172a;     /* Deep Navy for headings & headers */
-  --accent-emerald: #059669;   /* Emerald Green for buttons */
-  --accent-hover: #047857;     /* Darker Emerald for button hover */
-  --text-main: #334155;        /* Dark gray for crisp body readability */
-  --text-muted: #64748b;       /* Muted gray for subtitles/details */
-  --border-color: #e2e8f0;     /* Soft border color */
-  --row-alt: #f1f5f9;          /* Zebra striping tint for alternating rows */
-}
+    <!-- Card 2: Add Expense Form -->
+    <section>
+      <h2>Add New Expense</h2>
+      <form id="expense-form">
+        <div class="form-group">
+          <label for="expense-name">Expense Description</label>
+          <input type="text" id="expense-name" placeholder="e.g., Groceries, Internet Bill" required>
+        </div>
 
-/* Global Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+        <div class="form-group">
+          <label for="expense-amount">Amount ($)</label>
+          <input type="number" id="expense-amount" placeholder="0.00" step="0.01" required>
+        </div>
 
-/* =========================================
-   2. TYPOGRAPHY & BODY STYLING
-   ========================================= */
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-page);
-  color: var(--text-main);
-  line-height: 1.6;
-  padding: 40px 20px;
-}
+        <div class="form-group">
+          <label for="expense-category">Category</label>
+          <select id="expense-category">
+            <option value="Food">Food & Dining</option>
+            <option value="Transport">Transportation</option>
+            <option value="Utilities">Utilities & Bills</option>
+            <option value="Entertainment">Entertainment</option>
+          </select>
+        </div>
 
-main {
-  max-width: 900px;
-  margin: 0 auto;
-}
+        <button type="submit">Add Expense</button>
+      </form>
+    </section>
 
-h1, h2, h3, summary {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  color: var(--primary-navy);
-}
-
-h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
-}
-
-h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--bg-page);
-}
-
-p {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-/* =========================================
-   3. CSS BOX MODEL (Distinct Visual Cards)
-   ========================================= */
-#main-header, 
-.card, 
-.expenses-section, 
-.multimedia-section, 
-.help-section {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 24px 28px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-}
-
-/* Accent border highlight on the main header card */
-#main-header {
-  border-left: 6px solid var(--accent-emerald);
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 6px;
-}
-
-.logo-container img {
-  border-radius: 50%;
-}
-
-/* Help Section (Details & Summary) */
-.help-section {
-  padding: 16px 20px;
-  background-color: #f8fafc;
-}
-
-.help-section summary {
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--accent-emerald);
-}
-
-.help-section p {
-  margin-top: 8px;
-}
-
-/* =========================================
-   4. FORM & INPUT STYLING
-   ========================================= */
-.form-group {
-  margin-bottom: 16px;
-}
-
-label {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--primary-navy);
-  margin-bottom: 6px;
-}
-
-input[type="text"],
-input[type="number"],
-input[type="date"],
-select {
-  width: 100%;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  color: var(--text-main);
-  background-color: #ffffff;
-  padding: 10px 14px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-input:focus,
-select:focus {
-  outline: none;
-  border-color: var(--accent-emerald);
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
-}
-
-/* Cohesive Button Styling */
-button {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: var(--accent-emerald);
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-button:hover {
-  background-color: var(--accent-hover);
-}
-
-button:active {
-  transform: translateY(1px);
-}
-
-/* =========================================
-   5. EXPENSE TABLE STYLING
-   ========================================= */
-.expenses-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 8px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  overflow: hidden; /* Preserves rounded container corners */
-}
-
-.expenses-table thead {
-  background-color: var(--primary-navy);
-  color: #ffffff;
-}
-
-.expenses-table th {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  text-align: left;
-  padding: 14px 16px;
-}
-
-.expenses-table td {
-  padding: 12px 16px;
-  font-size: 0.95rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-/* Alternating Row Colors (Zebra Striping) */
-.expenses-table tbody tr:nth-child(even) {
-  background-color: var(--row-alt);
-}
-
-.expenses-table tbody tr:hover {
-  background-color: #e2e8f0;
-}
-
-/* =========================================
-   6. MULTIMEDIA SECTION (YouTube Video)
-   ========================================= */
-.multimedia-section iframe {
-  width: 100%;
-  max-width: 100%;
-  height: 315px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-}
+    <!-- Card 3: Expense Table -->
+    <section>
+      <h2>Expense History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Supermarket Groceries</td>
+            <td>Food & Dining</td>
+            <td>$45.50</td>
+            <td>2026-11-15</td>
+          </tr>
+          <tr>
+            <td>Electricity Bill</td>
+            <td>Utilities & Bills</td>
+            <td>$60.00</td>
+            <td>2026-11-16</td>
+          </tr>
+          <tr>
+            <td>City Bus Pass</td>
+            <td>Transportation</td>
+            <td>$15.00</td>
+            <td>2026-11-17</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

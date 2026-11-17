@@ -1,115 +1,199 @@
+/* =========================================
+   1. GOOGLE FONTS & COLOR VARIABLES
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
+
+:root {
+  --bg-page: #f1f5f9;          /* Midabka guud ee bogga (Light Slate) */
+  --bg-card: #ffffff;          /* Midabka kaararka (White) */
+  --primary-color: #1e3a8a;    /* Deep Navy Blue - Cinwaannada & Table Header */
+  --accent-color: #10b981;     /* Emerald Green - Badhamada (Buttons) */
+  --accent-hover: #059669;     /* Midabka marka badhanka la dul geeyo mouse-ka */
+  --text-dark: #1e293b;        /* Qoraalka caadiga ah */
+  --text-muted: #64748b;       /* Qoraallada yaryar / Labels */
+  --border-color: #cbd5e1;     /* Xuduudaha (Borders) */
+  --row-alt: #f8fafc;          /* Midabka safafka is-dhaafka ah ee shaxda */
+}
+
+/* =========================================
+   2. GENERAL RESET & TYPOGRAPHY
+   ========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f8f9fa;
-    color: #333;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding: 30px 20px;
 }
 
-#main-header {
-    margin-bottom: 20px;
+/* Konteenarka dhexe ee isku haya bogga */
+.container, main {
+  max-width: 850px;
+  margin: 0 auto;
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--primary-color);
+  margin-bottom: 12px;
 }
 
-main {
-    max-width: 700px;
-    margin: 0 auto;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-/* Form Styles & Direct Child Selector */
-#add-expense-section > form {
-    background: #fdfdfd;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--bg-page);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+/* =========================================
+   3. CSS BOX MODEL (SECTIONS AS CARDS)
+   ========================================= */
+header, section, .card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 25px 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+header {
+  text-align: center;
+  border-top: 5px solid var(--primary-color);
+}
+
+header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* =========================================
+   4. ADD EXPENSE FORM STYLING
+   ========================================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .form-group {
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.form-group label {
-    margin-bottom: 5px;
-    font-weight: bold;
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  margin-bottom: 6px;
 }
 
-.form-group input, 
-.form-group select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+input, select {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: var(--text-dark);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Focus State & Negation Pseudo-class */
 input:focus, select:focus {
-    border-color: #007bff;
-    outline: none;
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
 }
 
-input:not([type="submit"]) {
-    background-color: #fff;
+button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--accent-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 20px;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-#add-btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+button:hover {
+  background-color: var(--accent-hover);
 }
 
-#add-btn:hover {
-    background-color: #218838;
+button:active {
+  transform: scale(0.99);
 }
 
-/* Table Styles & Descendant Selector */
-.expenses-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+/* =========================================
+   5. EXPENSE TABLE STYLING
+   ========================================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden; /* Waxay ka caawisaa geesaha qalloocan (border-radius) inay shaqeeyaan */
+  border: 1px solid var(--border-color);
 }
 
-.expenses-table th, 
-.expenses-table td {
-    padding: 10px;
-    border: 1px solid #dee2e6;
-    text-align: left;
+thead {
+  background-color: var(--primary-color);
+  color: #ffffff;
 }
 
-.expenses-table thead {
-    background-color: #007bff;
-    color: white;
+th {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 0.95rem;
 }
 
-.expenses-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
 }
 
-.expenses-table tbody tr:hover {
-    background-color: #e2e6ea;
+/* Midabka safafka is-dhaafka ah (Alternating Row Colors) */
+tbody tr:nth-child(even) {
+  background-color: var(--row-alt);
 }
 
-.help-section {
-    margin-bottom: 20px;
-    padding: 10px;
-    background: #e9ecef;
-    border-radius: 4px;
-    cursor: pointer;
+tbody tr:hover {
+  background-color: #e2e8f0;
+  transition: background-color 0.15s ease;
 }
 
-.multimedia-section {
-    margin-top: 30px;
-    text-align: center;
+/* =========================================
+   6. RESPONSIVE DESIGN (MOBILE)
+   ========================================= */
+@media (max-width: 600px) {
+  body {
+    padding: 15px 10px;
+  }
+  
+  header, section {
+    padding: 20px 15px;
+  }
+  
+  th, td {
+    padding: 10px 8px;
+    font-size: 0.85rem;
+  }
 }
